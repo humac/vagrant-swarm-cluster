@@ -25,10 +25,10 @@ Vagrant.configure(3) do |config|
     config.vm.provision "shell", inline: $setup_docker
   end
   
-    config.vm.define "swarmnode3" do |config|
+  config.vm.define "swarmnode3" do |config|
     config.vm.box = "ubuntu/bionic64"
-    config.vm.hostname = "swarmnode2"
-    config.vm.network "private_network", ip: "10.0.7.11"
+    config.vm.hostname = "swarmnode3"
+    config.vm.network "private_network", ip: "10.0.7.12"
     config.vm.provision "shell", inline: $setup_docker
   end
 end
