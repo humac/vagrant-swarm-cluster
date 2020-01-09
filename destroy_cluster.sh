@@ -1,6 +1,6 @@
 #!/bin/bash
 
 echo "Destroying Swarm cluster..."
-docker -H 10.0.7.10:2375 swarm leave --force
-docker -H 10.0.7.11:2375 swarm leave --force
-docker -H 10.0.7.12:2375 swarm leave --force
+docker -H 10.20.30.201:2375 swarm leave --force
+docker -H 10.20.30.202:2375 swarm leave --force
+docker -H 10.20.30.203:2375 swarm leave --force
