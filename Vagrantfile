@@ -11,13 +11,13 @@ systemctl daemon-reload && systemctl restart docker.service;
 echo "10.20.30.201    swarmnode1      gluster1" >> /etc/hosts;
 echo "10.20.30.202    swarmnode2      gluster2" >> /etc/hosts;
 echo "10.20.30.203    swarmnode3      gluster3" >> /etc/hosts;
-# apt-get -y update && apt-get -y upgrade;
-# apt-get install -y software-properties-common;
-# add-apt-repository ppa:gluster/glusterfs-7 && apt-get update; 
-# apt-get install -y glusterfs-server;
-# systemctl enable glusterd; 
-# systemctl start glusterd;
-# systemctl status glusterd;
+apt-get -y update && apt-get -y upgrade;
+apt-get install -y software-properties-common;
+add-apt-repository ppa:gluster/glusterfs-7 && apt-get update; 
+apt-get install -y glusterfs-server;
+systemctl enable glusterd; 
+systemctl start glusterd;
+systemctl status glusterd;
 SCRIPT
 
 Vagrant.configure(2) do |config|
