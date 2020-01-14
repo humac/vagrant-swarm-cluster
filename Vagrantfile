@@ -15,8 +15,7 @@ SCRIPT
 
 
 Vagrant.configure(2) do |config|
-  VAGRANT_ROOT = File.dirname(File.expand_path(__FILE__))
-  file_to_disk = File.join(VAGRANT_ROOT, 'filename.vdi')
+  file_to_disk = './disk.vdi'
   config.vm.define "swarmnode1" do |config|
     config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = "swarmnode1"
