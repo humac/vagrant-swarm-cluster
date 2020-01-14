@@ -11,6 +11,13 @@ systemctl daemon-reload && systemctl restart docker.service;
 echo "10.20.30.201    swarmnode1      gluster1" >> /etc/hosts;
 echo "10.20.30.202    swarmnode2      gluster2" >> /etc/hosts;
 echo "10.20.30.203    swarmnode3      gluster3" >> /etc/hosts;
+# apt-get -y update && apt-get -y upgrade;
+# apt-get install -y software-properties-common;
+# add-apt-repository ppa:gluster/glusterfs-7 && apt-get update; 
+# apt-get install -y glusterfs-server;
+# systemctl enable glusterd; 
+# systemctl start glusterd;
+# systemctl status glusterd;
 SCRIPT
 
 
@@ -20,8 +27,6 @@ Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = "swarmnode1"
     config.vm.network "public_network", ip: "10.20.30.201"
-    config.vm.customize ['createhd', '--filename', file_to_disk, '--size', 500 * 1024]
-    config.vm.customize ['storageattach', :id, '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
     config.vm.provision "shell", inline: $setup_docker
   end
 
