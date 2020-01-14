@@ -20,19 +20,11 @@ echo "10.20.30.203    swarmnode3      gluster3" >> /etc/hosts;
 # systemctl status glusterd;
 SCRIPT
 
-disk = './secondDisk.vdi'
 Vagrant.configure(2) do |config|
   config.vm.define "swarmnode1" do |config|
     config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = "swarmnode1"
     config.vm.network "public_network", ip: "10.20.30.201"
-    config.vm.provider "virtualbox" do |vb|
-      unless File.exist?(disk)
-        vb.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]
-      end
-      vb.memory = "2048"
-      vb.customize ['storageattach', :id,  '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
-    end
     config.vm.provision "shell", inline: $setup_docker
   end
 
@@ -40,13 +32,6 @@ Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = "swarmnode2"
     config.vm.network "public_network", ip: "10.20.30.202"
-    config.vm.provider "virtualbox" do |vb|
-      unless File.exist?(disk)
-        vb.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]
-      end
-      vb.memory = "2048"
-      vb.customize ['storageattach', :id,  '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
-    end
     config.vm.provision "shell", inline: $setup_docker
   end
 
@@ -54,13 +39,6 @@ Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = "swarmnode3"
     config.vm.network "public_network", ip: "10.20.30.203"
-    config.vm.provider "virtualbox" do |vb|
-      unless File.exist?(disk)
-        vb.customize ['createhd', '--filename', disk, '--variant', 'Fixed', '--size', 20 * 1024]
-      end
-      vb.memory = "2048"
-      vb.customize ['storageattach', :id,  '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', disk]
-    end
     config.vm.provision "shell", inline: $setup_docker
   end
 end
