@@ -18,7 +18,7 @@ systemctl status glusterd;
 SCRIPT
 
 # Grab the name of the default interface
-$default_network_interface = `ip route | grep -E "^default" | awk '{printf "%s", $5; exit 0}'`
+$default_network_interface = 'ip route | grep -E "^default" | awk '{printf "%s", $5; exit 0}''
 
 Vagrant.configure(2) do |config|
   config.vm.define "swarmnode1" do |config|
