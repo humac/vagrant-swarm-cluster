@@ -22,8 +22,7 @@ Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = "swarmnode1"
     # Specify the interface when creating the public network
-    config.vm.network "public_network", bridge: "en1: Wi-Fi (AirPort)"  
-    config.vm.network "public_network", ip: "10.20.30.201"
+    config.vm.network "public_network", bridge: "en1: Wi-Fi (AirPort)", ip: "10.20.30.201"
     config.vm.provision "shell", inline: $setup_docker
   end
 
@@ -31,8 +30,7 @@ Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = "swarmnode2"
     # Specify the interface when creating the public network
-    config.vm.network "public_network", bridge: "en1: Wi-Fi (AirPort)"
-    config.vm.network "public_network", ip: "10.20.30.202"
+    config.vm.network "public_network", bridge: "en1: Wi-Fi (AirPort)", ip: "10.20.30.202"
     config.vm.provision "shell", inline: $setup_docker
   end
 
@@ -40,8 +38,7 @@ Vagrant.configure(2) do |config|
     config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = "swarmnode3"
     # Specify the interface when creating the public network
-    config.vm.network "public_network", bridge: "en1: Wi-Fi (AirPort)"
-    config.vm.network "public_network", ip: "10.20.30.203"
+    config.vm.network "public_network", bridge: "en1: Wi-Fi (AirPort)", ip: "10.20.30.203"
     config.vm.provision "shell", inline: $setup_docker
   end
 end
