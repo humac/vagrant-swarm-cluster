@@ -17,10 +17,15 @@ systemctl start glusterd;
 systemctl status glusterd;
 SCRIPT
 
+# Grab the name of the default interface
+$default_network_interface = `ip route | grep -E "^default" | awk '{printf "%s", $5; exit 0}'`
+
 Vagrant.configure(2) do |config|
   config.vm.define "swarmnode1" do |config|
     config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = "swarmnode1"
+    # Specify the interface when creating the public network
+    config.vm.network "public_network", bridge: "#$default_network_interface"  
     config.vm.network "public_network", ip: "10.20.30.201"
     config.vm.provision "shell", inline: $setup_docker
   end
@@ -28,6 +33,8 @@ Vagrant.configure(2) do |config|
   config.vm.define "swarmnode2" do |config|
     config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = "swarmnode2"
+    # Specify the interface when creating the public network
+    config.vm.network "public_network", bridge: "#$default_network_interface"
     config.vm.network "public_network", ip: "10.20.30.202"
     config.vm.provision "shell", inline: $setup_docker
   end
@@ -35,6 +42,8 @@ Vagrant.configure(2) do |config|
   config.vm.define "swarmnode3" do |config|
     config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = "swarmnode3"
+    # Specify the interface when creating the public network
+    config.vm.network "public_network", bridge: "#$default_network_interface"
     config.vm.network "public_network", ip: "10.20.30.203"
     config.vm.provision "shell", inline: $setup_docker
   end
